@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
- const Country= (sequelize) => {
+ module.exports= (sequelize) => {
   // defino el modelo
   const Country= sequelize.define('Country', {
     id: {
@@ -52,4 +52,4 @@ const { DataTypes } = require('sequelize');
 
 };
 
-module.exports = Country;
+
