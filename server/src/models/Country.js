@@ -1,9 +1,9 @@
 const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
- module.exports= (sequelize) => {
+module.exports = (sequelize) => {
   // defino el modelo
-  const Country= sequelize.define('Country', {
+  const Country = sequelize.define('Country', {
     id: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,37 +18,42 @@ const { DataTypes } = require('sequelize');
       type: DataTypes.STRING,
       allowNull: false,
     },
-    continent:{
+    continent: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    capital:{
+    capital: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    subregion:{
+    subregion: {
       type: DataTypes.STRING,
     },
-    area:{
-      type: DataTypes.INTEGER,
+    area: {
+      type: DataTypes.FLOAT,
     },
-    population:{
-      type: DataTypes.INTEGER,
+    population: {
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
   },
-  {timestamps:false});
+    { timestamps: false });
 
-  Country.beforeCreate((country) => {
-    const generateDefaultCode = () => {
-      const firstLetterName =  country.name.charAt(0).toUpperCase();
-      const firstLetterContinent = country.continent.charAt(0).toUpperCase();
-      const firstLetterCapital = country.capital.charAt(0).toUpperCase();
-      return `${firstLetterName}${firstLetterContinent}${firstLetterCapital}`;
-    };
-  
-    country.id = generateDefaultCode();
-  });
+    Country.beforeCreate(async (country) => {
+      const generateDefaultCode = () => {
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ';
+        let serial = '';
+    
+        for (let i = 0; i < 3; i++) {
+          const randomIndex = Math.floor(Math.random() * alphabet.length);
+          serial += alphabet.charAt(randomIndex);
+        }
+    
+        return serial;
+      };
+    
+      country.id = await generateDefaultCode();
+    });
 
 };
 
