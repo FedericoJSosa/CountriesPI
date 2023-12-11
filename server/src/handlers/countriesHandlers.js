@@ -1,26 +1,35 @@
-const getAllHandler=(req , res)=>{
+const getAllCountries= require("../controllers/countryControllers/getAllCountries");
+const getNameCountries= require("../controllers/countryControllers/getNameCountries");
+const getIdCountries= require("../controllers/countryControllers/getIdCountries");
+
+const getAllHandler= async(req , res)=>{
     try {
-        res.status(200).send("Aca estamos en getAllHandler");    
+        const data= await getAllCountries();
+        res.status(200).json({data: data});    
     } catch (error) {
-        res.status(400).send("Todo mal en getAllHandler");
+        res.status(500).json({error: error.message});
     }
     
 }
 
-const getNameHandler=(req , res)=>{
+const getNameHandler= async(req , res)=>{
     try {
-        res.status(200).send("Aca estamos en getNameHandler");    
+        const nameQuery= req.query.name
+        const data= await getNameCountries(nameQuery);
+        res.status(200).json({data: data});    
     } catch (error) {
-        res.status(400).send("Todo mal en getNameHandler");
+        res.status(400).json({error: error.message});
     }
     
 }
 
-const getIdHandler=(req , res)=>{
-    try {
-        res.status(200).send("Aca estamos en getIdHandler");    
+const getIdHandler= async(req , res)=>{
+    try { 
+        const paramId= req.params.id;
+        const data= await getIdCountries(paramId);
+        res.status(200).json({data: data});    
     } catch (error) {
-        res.status(400).send("Todo mal en getIdHandler");
+        res.status(400).json({error: error.message});
     }
     
 }
