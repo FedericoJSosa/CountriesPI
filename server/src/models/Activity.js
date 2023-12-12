@@ -21,8 +21,8 @@ module.exports = (sequelize) => {
     duration:{
       type: DataTypes.INTEGER,
   },
-    difficulty: {
-        type: DataTypes.INTEGER,
+    season: {
+        type: DataTypes.STRING,
         allowNull: false,
   },
 },

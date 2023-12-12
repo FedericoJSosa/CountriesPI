@@ -4,7 +4,7 @@ const { conn } = require('./src/db.js');
 const {Country}=require("./src/db.js")
 const PORT = 3001;
 
-conn.sync(/* { force: true } */).then(() => {
+conn.sync( /* {  force: true  } */ ).then(() => {
 server.listen(PORT, async () => {
   console.log(`Server listening on port ${PORT}`);
   const countryCount= await Country.count()

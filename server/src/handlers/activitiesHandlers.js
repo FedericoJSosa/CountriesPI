@@ -1,17 +1,25 @@
-const postActivitiesHandler=(req , res)=>{
+const postActivitiesController= require("../controllers/activitiesControllers/postActivitiesController");
+const getActivitiesController= require("../controllers/activitiesControllers/getActivitiesController");
+
+
+const postActivitiesHandler=async(req , res)=>{
     try {
-        res.status().send();    
+        const {name, difficulty, duration, season}= req.body;
+        const newData= {name, difficulty, duration, season};
+        const data= await postActivitiesController(newData);
+        res.status(200).json({message: "Salio todo bien", data});    
     } catch (error) {
-        res.status().send();
+        res.status(400).json({error: error.message});
     }
     
 }
 
-const getActivitiesHandler=(req , res)=>{
+const getActivitiesHandler=async(req , res)=>{
     try {
-        res.status().send();    
+        const data= await getActivitiesController();
+        res.status(200).json({data: data});    
     } catch (error) {
-        res.status().send();
+        res.status(400).json({error: error.message});
     }
     
 }
