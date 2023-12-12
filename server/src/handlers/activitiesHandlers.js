@@ -4,9 +4,8 @@ const getActivitiesController= require("../controllers/activitiesControllers/get
 
 const postActivitiesHandler=async(req , res)=>{
     try {
-        const {name, difficulty, duration, season}= req.body;
-        const newData= {name, difficulty, duration, season};
-        const data= await postActivitiesController(newData);
+        const {name, difficulty, duration, season, countries}= req.body;
+        const data= await postActivitiesController({name, difficulty, duration, season, countries});
         res.status(200).json({message: "Salio todo bien", data});    
     } catch (error) {
         res.status(400).json({error: error.message});
