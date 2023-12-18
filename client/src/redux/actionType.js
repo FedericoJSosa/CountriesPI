@@ -1,0 +1,9 @@
+const GET_COUNTRIES="GET_COUNTRIES";
+const GET_COUNTRY="GET_COUNTRY";
+const CLEAN="CLEAN";
+
+export{
+    GET_COUNTRIES,
+    GET_COUNTRY,
+    CLEAN,
+}

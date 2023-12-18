@@ -14,8 +14,8 @@ function App() {
       <Routes>
         <Route path="/" Component={Landing} />
         <Route path="/home" Component={Home} />
-        <Route path="/detail" Component={Detail} />
         <Route path="/form" Component={Form} />
+        <Route path="/detail/:id" Component={Detail} />
       </Routes>
     </div>
   )
