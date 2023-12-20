@@ -7,7 +7,7 @@ const postActivitiesController=async({name, difficulty, duration, season, countr
 
     const countriesId= await Country.findAll({
         where:{
-            name: {[Op.iLike]: countries}
+            name: {[Op.in]: countries}
         },
         attributes:["id"]
     })
