@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import style from "./Form.module.css";
+import { Link } from "react-router-dom";
 
 const Form = () => {
     const [formState, setFormState] = useState({
@@ -42,7 +43,6 @@ const Form = () => {
 
     return (
         <div>
-            <NavBar />
             <form className={style.mainContainer}>
                 <div>
                     <label>Name: </label>
@@ -71,6 +71,7 @@ const Form = () => {
                 </div>
                 <button type="submit">Submit</button>
             </form>
+            <Link to="/home"><button className={style.button}>Home</button></Link>
         </div>
     );
 };

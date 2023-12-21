@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountryId, clean } from "../../redux/actions";
+import { Link } from "react-router-dom";
+import style from "./Detail.module.css"
 
 const Detail = () => {
     const { id } = useParams();
@@ -28,10 +30,12 @@ const Detail = () => {
                 <p>SubRegion: {countryId.subregion}</p>
                 <p>Area: {countryId.area}</p>
                 <p>Population: {countryId.population}</p>
-                <p>Activities: {countryId.Activities.length !=0 ? 
-                countryId.Activities.map(activity => activity.name).join(", "):
-                "No activities have been assigned yet"}</p>
-            
+                <p>Activities: {countryId.Activities.length != 0 ?
+                    countryId.Activities.map(activity => activity.name).join(", ") :
+                    "No activities have been assigned yet"}</p>
+
+                <Link to="/home"><button className={style.button}>Home</button></Link>
+
             </div>
         )
     } else {
