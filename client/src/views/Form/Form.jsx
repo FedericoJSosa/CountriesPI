@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import NavBar from "../../components/NavBar/NavBar";
 import style from "./Form.module.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Form = () => {
     const [formState, setFormState] = useState({
@@ -41,9 +41,24 @@ const Form = () => {
         });
     };
 
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        if (errors.name || errors.difficulty || errors.duration || errors.season || errors.countries) {
+            return "Some fields are missing or a rule is violated."
+        } else {
+            try {
+               await axios.post("http://localhost:3001/activities",  formState);
+               
+            } catch (error) {
+                console.log("Error al enviar el formulario:", error);
+            }
+        }
+    };
+
+
     return (
         <div>
-            <form className={style.mainContainer}>
+            <form className={style.mainContainer} onSubmit={onSubmit}>
                 <div>
                     <label>Name: </label>
                     <input type="text" value={formState.name} onChange={onChange} name="name" />

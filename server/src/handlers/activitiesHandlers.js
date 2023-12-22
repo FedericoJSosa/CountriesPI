@@ -8,6 +8,7 @@ const postActivitiesHandler=async(req , res)=>{
         const data= await postActivitiesController({name, difficulty, duration, season, countries});
         res.status(200).json({message: "Salio todo bien", data});    
     } catch (error) {
+        console.log(error.message);
         res.status(400).json({error: error.message});
     }
     

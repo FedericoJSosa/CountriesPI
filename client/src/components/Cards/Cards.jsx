@@ -5,9 +5,9 @@ const Cards=()=>{
     const country= useSelector(state=>state.country);
     const currentPage = useSelector((state) => state.currentPage);
     const pageSize = useSelector((state) => state.pageSize);
-  /*   const filter= useSelector((state)=> state.filter)
+    const filter= useSelector((state)=> state.filter)
     const order= useSelector((state)=> state.order)
-    const criteria= useSelector((state)=> state.criteria) */
+    const criteria= useSelector((state)=> state.criteria)
 
     const startIndex = (currentPage-1) * pageSize;
     const endIndex = startIndex + pageSize;
