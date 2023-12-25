@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_COUNTRIES, GET_COUNTRY, CLEAN, CURRENT_PAGE, FILTER, PAGE_ORDER, CRITERIA } from "./actionType";
+import { GET_COUNTRIES, GET_COUNTRY, CLEAN, CURRENT_PAGE } from "./actionType";
 
 const getCountries = () => {
     return async (dispatch) => {
@@ -40,39 +40,6 @@ const pageChange = (currentPage) => {
     }
 };
 
-const setFilter = (filter) => {
-    return (dispatch)=>{
-        dispatch(
-            {
-                type: FILTER,
-                payload: filter
-        
-            }
-        )
-    }
-};
-
-const setOrder = (order) => {
-    return (dispatch)=>{
-        dispatch(
-            {
-                type: PAGE_ORDER,
-                payload: order
-            }
-        )
-    }
-};
-
-const setCriteria = (criteria) => {
-    return (dispatch)=>{
-        dispatch(
-            {
-                type: CRITERIA,
-                payload: criteria
-            }
-        )
-    }
-};
 
 const clean = () => {
     return { type: CLEAN }
@@ -84,5 +51,5 @@ export {
     getCountries,
     getCountryId,
     clean,
-    pageChange,
+    pageChange
 }

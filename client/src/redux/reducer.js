@@ -1,13 +1,10 @@
-import { GET_COUNTRIES, GET_COUNTRY, CLEAN, CURRENT_PAGE, FILTER, PAGE_ORDER, CRITERIA  } from "./actionType";
+import { GET_COUNTRIES, GET_COUNTRY, CLEAN, CURRENT_PAGE  } from "./actionType";
 
 const initialState={
     country:[],
     countryId:[],
     currentPage: 1,
     pageSize: 10,
-    filter:"",
-    order:"",
-    criteria:""
 };
 
 
@@ -25,15 +22,6 @@ const rootReducer=(state=initialState, action)=>{
 
         case CURRENT_PAGE:
             return{...state, currentPage: action.payload}
-
-        case FILTER:
-            return{...state, filter: action.payload}
-        
-        case PAGE_ORDER:
-            return{...state, filter: action.payload} 
-
-        case CRITERIA:
-            return{...state, filter: action.payload}
 
         default:
             return {...state}
