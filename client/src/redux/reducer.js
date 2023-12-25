@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, GET_COUNTRY, CLEAN, CURRENT_PAGE  } from "./actionType";
+import { GET_COUNTRIES, GET_COUNTRY, CLEAN, CURRENT_PAGE, ACTIVITIES_ACTU  } from "./actionType";
 
 const initialState={
     country:[],
@@ -22,6 +22,7 @@ const rootReducer=(state=initialState, action)=>{
 
         case CURRENT_PAGE:
             return{...state, currentPage: action.payload}
+     
 
         default:
             return {...state}
