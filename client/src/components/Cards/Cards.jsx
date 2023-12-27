@@ -1,10 +1,10 @@
 import Card from "../Card/Card";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import style from "./Cards.module.css";
 
 const Cards = () => {
-  const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.country);
   const currentPage = useSelector((state) => state.currentPage);
   const pageSize = useSelector((state) => state.pageSize);
@@ -113,6 +113,7 @@ const Cards = () => {
           ))}
         </select>
       </div>
+      <div className={style.Cards}>
       {displayedCountries.map((country) => (
         <Card
           key={country.id}
@@ -126,6 +127,7 @@ const Cards = () => {
           population={country.population}
         />
       ))}
+      </div>
     </div>
   );
 };

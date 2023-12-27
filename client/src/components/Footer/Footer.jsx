@@ -26,7 +26,6 @@ const Footer = () => {
 
     return (
         <div className={style.mainContainer}>
-            <h1>Soy Footer</h1>
             <div className={style.pagination}>
                 {renderPageNumbers()}
             </div>

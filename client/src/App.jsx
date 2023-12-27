@@ -4,8 +4,6 @@ import Landing from "./views/Landing/Landing";
 import Detail from "./views/Detail/Detail";
 import Form from "./views/Form/Form";
 
-import './App.css'
-
 
 function App() {
   return (

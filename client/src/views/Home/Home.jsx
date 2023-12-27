@@ -14,12 +14,15 @@ const Home = () => {
     
     return (
         <div className={style.mainContainer}>
-            <NavBar />
-            <div className={style.mainContainer}>
-                <h1>Soy Home</h1>
+            <div className={style.NavBar}>
+            <NavBar/>
+            </div>
+            <div className={style.Cards}>
                 <Cards/>
             </div>
+            <div className={style.Footer}>
             <Footer/>
+            </div>
         </div>
     )
 };
