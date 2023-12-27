@@ -35,7 +35,7 @@ const Cards = () => {
       activity.name.toLowerCase() === selectedActivity.toLowerCase()
     );
   };
-  
+
 
   const filterByName = (country, searchTerm) => {
     return country.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -104,7 +104,7 @@ const Cards = () => {
         <select
           value={selectedActivity}
           onChange={(event) => setSelectedActivity(event.target.value)}
-        >
+          >
           <option value="All">All Activities</option>
           {[...new Set(activities.flatMap(activity => activity.name))].map((activityName) => (
             <option key={activityName} value={activityName}>
