@@ -1,10 +1,13 @@
 import Card from "../Card/Card";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import style from "./Cards.module.css";
+import {countriesTotalCount} from "../../redux/actions"
+
 
 const Cards = () => {
+  const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.country);
   const currentPage = useSelector((state) => state.currentPage);
   const pageSize = useSelector((state) => state.pageSize);
@@ -65,69 +68,85 @@ const Cards = () => {
     );
   });
 
+
+
+  useEffect(()=>{
+    const currenTotalCountries=filteredCountries.length
+    dispatch(countriesTotalCount(currenTotalCountries))
+  }, [filteredCountries]); 
+
   const displayedCountries = filteredCountries.slice(startIndex, endIndex);
 
   return (
     <div>
-      <div>
-        <input
-          type="text"
-          placeholder="Search by country name"
-          value={searchTerm}
-          onChange={(event) => setSearchTerm(event.target.value)}
-        />
-        <select
-          value={sortOrder}
-          onChange={(event) => setSortOrder(event.target.value)}
-        >
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
-        <select
-          value={sortBy}
-          onChange={(event) => setSortBy(event.target.value)}
-        >
-          <option value="name">Name</option>
-          <option value="population">Population</option>
-        </select>
-        <select
-          value={selectedContinent}
-          onChange={(event) => setSelectedContinent(event.target.value)}
-        >
-          <option value="All">All Continents</option>
-          {Array.from(new Set(allCountries.map((country) => country.continent))).map((continent) => (
-            <option key={continent} value={continent}>
-              {continent}
-            </option>
-          ))}
-        </select>
-        <select
-          value={selectedActivity}
-          onChange={(event) => setSelectedActivity(event.target.value)}
+
+      <div className={style.bar}>
+        <div className={style.searchBar}>
+          <input
+            type="text"
+            placeholder="Search by country name"
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+          />
+        </div>
+
+        <div>
+
+          <select
+            value={sortOrder}
+            onChange={(event) => setSortOrder(event.target.value)}
           >
-          <option value="All">All Activities</option>
-          {[...new Set(activities.flatMap(activity => activity.name))].map((activityName) => (
-            <option key={activityName} value={activityName}>
-              {activityName}
-            </option>
-          ))}
-        </select>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+          <select
+            value={sortBy}
+            onChange={(event) => setSortBy(event.target.value)}
+          >
+            <option value="name">Name</option>
+            <option value="population">Population</option>
+          </select>
+          <select
+            value={selectedContinent}
+            onChange={(event) => setSelectedContinent(event.target.value)}
+          >
+            <option value="All">All Continents</option>
+            {Array.from(new Set(allCountries.map((country) => country.continent))).map((continent) => (
+              <option key={continent} value={continent}>
+                {continent}
+              </option>
+            ))}
+          </select>
+          <select
+            value={selectedActivity}
+            onChange={(event) => setSelectedActivity(event.target.value)}
+          >
+            <option value="All">All Activities</option>
+            {[...new Set(activities.flatMap(activity => activity.name))].map((activityName) => (
+              <option key={activityName} value={activityName}>
+                {activityName}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
+
       <div className={style.Cards}>
-      {displayedCountries.map((country) => (
-        <Card
-          key={country.id}
-          id={country.id}
-          name={country.name}
-          img={country.img}
-          continent={country.continent}
-          capital={country.capital}
-          subregion={country.subregion}
-          area={country.area}
-          population={country.population}
-        />
-      ))}
+        {displayedCountries.map((country) => (
+          <Card
+            key={country.id}
+            id={country.id}
+            name={country.name}
+            img={country.img}
+            continent={country.continent}
+            capital={country.capital}
+            subregion={country.subregion}
+            area={country.area}
+            population={country.population}
+          />
+        ))}
       </div>
+
     </div>
   );
 };

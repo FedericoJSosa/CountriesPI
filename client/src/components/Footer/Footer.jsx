@@ -6,7 +6,7 @@ const Footer = () => {
     const dispatch = useDispatch();
     const currentPage = useSelector((state) => state.currentPage);
     const pageSize = useSelector((state) => state.pageSize);
-    const totalCountries = useSelector((state) => state.country.length);
+    const totalCountries = useSelector((state) => state.currentCountries);
 
     const totalPages = Math.ceil(totalCountries / pageSize);
 

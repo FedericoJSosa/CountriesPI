@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_COUNTRIES, GET_COUNTRY, CLEAN, CURRENT_PAGE, ACTIVITIES_ACTU } from "./actionType";
+import { GET_COUNTRIES, GET_COUNTRY, CLEAN, CURRENT_PAGE, CHANGE_CURRENT_COUNTRIES } from "./actionType";
 
 const getCountries = () => {
     return async (dispatch) => {
@@ -40,6 +40,16 @@ const pageChange = (currentPage) => {
     }
 };
 
+const countriesTotalCount = (countriesCount) => {
+    return (dispatch) => {
+        dispatch(
+            {
+                type: CHANGE_CURRENT_COUNTRIES,
+                payload: countriesCount
+            }
+        )
+    }
+};
 
 const clean = () => {
     return { type: CLEAN }
@@ -51,5 +61,6 @@ export {
     getCountries,
     getCountryId,
     clean,
-    pageChange
+    pageChange,
+    countriesTotalCount
 }

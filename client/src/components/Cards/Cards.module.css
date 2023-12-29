@@ -1,6 +1,22 @@
-.Cards{
+.bar {
+    background-color: rgb(221, 161, 94);
+    margin: 10px;
+    display: flex;
+
+    flex-direction: column-reverse;
+    padding-top: 10px;
+    height: 100%;
+}
+
+.searchBar {
+    margin: 10px;
+}
+
+
+.Cards {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    background-color: red
+    justify-content: center;
+    background-color: rgb(221, 161, 94);
 }

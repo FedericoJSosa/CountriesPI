@@ -1,15 +1,16 @@
 body, html {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 .mainContainer {
   background-position: center;
-  height: 100vh;
+  min-height: 100vh; /* Establecer una altura mínima para garantizar que el contenido se extienda al menos a lo alto de la ventana */
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(254, 250, 224);
+  background-color: rgb(223, 202, 160);
 }
 
 .NavBar {
@@ -29,9 +30,11 @@ body, html {
 }
 
 .Footer {
-  background-color: #e74c3c; 
+  background-color:  rgb(221, 161, 94); 
   padding: 10px;
   width: 100%;
   box-sizing: border-box; 
   text-align: center; 
+  position: fixed;
+  bottom: 0;
 }
