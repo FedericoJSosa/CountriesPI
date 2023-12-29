@@ -11,7 +11,6 @@ const Form = () => {
         season: "",
         countries: ""
     });
-
     const [errors, setErrors] = useState({
         name: "",
         difficulty: "",
@@ -19,6 +18,7 @@ const Form = () => {
         season: "",
         countries: ""
     });
+    const [submitMessage, setSubmitMessage] = useState("");
 
     useEffect(() => {
         validate(formState);
@@ -30,14 +30,13 @@ const Form = () => {
 
         setFormState({ ...formState, [prop]: value });
     };
-
     const validate = (formState) => {
         setErrors({
-            name: formState.name.trim() === "" ? "" : /^[a-zA-Z\s.'-]{1,25}$/u.test(formState.name) ? "" : "Hay un error en el nombre",
-            difficulty: formState.difficulty.trim() === "" ? "" : /^[0-5]$/.test(formState.difficulty) ? "" : "Hay un error en la dificultad",
-            duration: formState.duration.trim() === "" ? "" : /^(?:[0-9]|1\d|2[0-4])$/.test(formState.duration) ? "" : "Hay un error en la duración",
-            season: formState.season.trim() === "" ? "" : /^(Verano|Invierno|Primavera|Otoño)$/i.test(formState.season) ? "" : "Hay un error en la temporada",
-            countries: formState.countries.trim() === "" ? "" : formState.countries.length <= 50 ? "" : "Hay un error en el nombre de los países"
+            name: formState.name.trim() === "" ? "" : /^[a-zA-Z\s.'-]{1,25}$/u.test(formState.name) ? "" : "It cannot contain numbers. Text only.",
+            difficulty: formState.difficulty.trim() === "" ? "" : /^[0-5]$/.test(formState.difficulty) ? "" : "It must be a number between 0 and 5.",
+            duration: formState.duration.trim() === "" ? "" : /^(?:[0-9]|1\d|2[0-4])$/.test(formState.duration) ? "" : "It must be a number between 0 and 24.",
+            season: formState.season.trim() === "" ? "" : /^(Verano|Invierno|Primavera|Otoño)$/i.test(formState.season) ? "" : "Only seasons.",
+            countries: formState.countries.trim() === "" ? "" : formState.countries.length <= 50 ? "" : "It cannot be longer than 50"
         });
     };
 
@@ -48,17 +47,17 @@ const Form = () => {
         } else {
             try {
                await axios.post("http://localhost:3001/activities",  formState);
-               
+               setSubmitMessage("The activity has been created");
             } catch (error) {
-                console.log("Error al enviar el formulario:", error);
+                setSubmitMessage("An error occurred while loading the data. Please try again later.");
             }
         }
     };
 
 
     return (
-        <div>
-            <form className={style.mainContainer} onSubmit={onSubmit}>
+        <div className={style.container}>
+            <form className={style.Form} onSubmit={onSubmit}>
                 <div>
                     <label>Name: </label>
                     <input type="text" value={formState.name} onChange={onChange} name="name" />
@@ -84,8 +83,10 @@ const Form = () => {
                     <input type="text" value={formState.countries} onChange={onChange} name="countries" />
                     {formState.countries.trim() !== "" && errors.countries && <span>{errors.countries}</span>}
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit" className={style.button}>Submit</button>
             </form>
+
+            {submitMessage && <p>{submitMessage}</p>}
             <Link to="/home"><button className={style.button}>Home</button></Link>
         </div>
     );

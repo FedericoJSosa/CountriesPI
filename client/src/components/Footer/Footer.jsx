@@ -18,7 +18,7 @@ const Footer = () => {
         const pageNumbers = [];
         for (let i = 1; i <= totalPages; i++) {
             pageNumbers.push(
-                <button key={i} onClick={() => handlePageClick(i)} className={i === currentPage ? "active" : ""}>{i}</button>
+                <button key={i} onClick={() => handlePageClick(i)} className={i === currentPage ? style.active : ""}>{i}</button>
             );
         }
         return pageNumbers;

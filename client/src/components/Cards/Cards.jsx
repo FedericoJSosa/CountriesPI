@@ -19,6 +19,7 @@ const Cards = () => {
   const [selectedContinent, setSelectedContinent] = useState("All");
   const [selectedActivity, setSelectedActivity] = useState("All");
 
+
   useEffect(() => {
     axios.get("http://localhost:3001/activities")
       .then(response => {
@@ -68,12 +69,11 @@ const Cards = () => {
     );
   });
 
-
-
   useEffect(()=>{
     const currenTotalCountries=filteredCountries.length
     dispatch(countriesTotalCount(currenTotalCountries))
   }, [filteredCountries]); 
+
 
   const displayedCountries = filteredCountries.slice(startIndex, endIndex);
 
@@ -130,7 +130,11 @@ const Cards = () => {
           </select>
         </div>
       </div>
-
+<div>
+  {filteredCountries.length===0 && (<p>
+        There are no countries that match. Change the parameters and try again.
+      </p>)}
+</div>
       <div className={style.Cards}>
         {displayedCountries.map((country) => (
           <Card

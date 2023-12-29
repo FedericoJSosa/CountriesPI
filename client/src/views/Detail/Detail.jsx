@@ -20,11 +20,11 @@ const Detail = () => {
     if (countryId.Activities) {
 
         return (
-            <div>
-                <h1>Soy Detail</h1>
-                <p>ID: {countryId.id}</p>
+            <div className={style.container}>
+    <div className={style.Detail}>
+                <p className={style.p}>ID: {countryId.id}</p>
                 <p>Name: {countryId.name}</p>
-                <img src={countryId.img} alt="Not found" />
+                <img src={countryId.img} alt="Not found"  className={style.img}/>
                 <p>Continent: {countryId.continent}</p>
                 <p>Capital: {countryId.capital}</p>
                 <p>SubRegion: {countryId.subregion}</p>
@@ -34,8 +34,10 @@ const Detail = () => {
                     countryId.Activities.map(activity => activity.name).join(", ") :
                     "No activities have been assigned yet"}</p>
 
-                <Link to="/home"><button className={style.button}>Home</button></Link>
+    </div>
+    <Link to="/home"><button className={style.button}>Home</button></Link>
 
+            
             </div>
         )
     } else {

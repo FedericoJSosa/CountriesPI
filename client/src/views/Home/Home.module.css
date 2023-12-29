@@ -6,7 +6,7 @@ body, html {
 
 .mainContainer {
   background-position: center;
-  min-height: 100vh; /* Establecer una altura mínima para garantizar que el contenido se extienda al menos a lo alto de la ventana */
+  min-height: 100vh; 
   display: flex;
   flex-direction: column;
   align-items: center;
