@@ -21,23 +21,23 @@ const Detail = () => {
 
         return (
             <div className={style.container}>
-    <div className={style.Detail}>
-                <p className={style.p}>ID: {countryId.id}</p>
-                <p>Name: {countryId.name}</p>
-                <img src={countryId.img} alt="Not found"  className={style.img}/>
-                <p>Continent: {countryId.continent}</p>
-                <p>Capital: {countryId.capital}</p>
-                <p>SubRegion: {countryId.subregion}</p>
-                <p>Area: {countryId.area}</p>
-                <p>Population: {countryId.population}</p>
-                <p>Activities: {countryId.Activities.length != 0 ?
-                    countryId.Activities.map(activity => activity.name).join(", ") :
-                    "No activities have been assigned yet"}</p>
+                <div className={style.Detail}>
+                    <p className={style.p}>ID: {countryId.id}</p>
+                    <p>Name: {countryId.name}</p>
+                    <img src={countryId.img} alt="Not found" className={style.img} />
+                    <p>Continent: {countryId.continent}</p>
+                    <p>Capital: {countryId.capital}</p>
+                    <p>SubRegion: {countryId.subregion}</p>
+                    <p>Area: {countryId.area}</p>
+                    <p>Population: {countryId.population}</p>
+                    <p>Activities: {countryId.Activities.length != 0 ?
+                        countryId.Activities.map(activity => activity.name).join(", ") :
+                        "No activities have been assigned yet"}</p>
 
-    </div>
-    <Link to="/home"><button className={style.button}>Home</button></Link>
+                </div>
+                <Link to="/home"><button className={style.button}>Home</button></Link>
 
-            
+
             </div>
         )
     } else {

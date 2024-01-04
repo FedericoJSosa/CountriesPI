@@ -32,11 +32,16 @@ const Form = () => {
     };
     const validate = (formState) => {
         setErrors({
-            name: formState.name.trim() === "" ? "" : /^[a-zA-Z\s.'-]{1,25}$/u.test(formState.name) ? "" : "It cannot contain numbers. Text only.",
-            difficulty: formState.difficulty.trim() === "" ? "" : /^[0-5]$/.test(formState.difficulty) ? "" : "It must be a number between 0 and 5.",
-            duration: formState.duration.trim() === "" ? "" : /^(?:[0-9]|1\d|2[0-4])$/.test(formState.duration) ? "" : "It must be a number between 0 and 24.",
-            season: formState.season.trim() === "" ? "" : /^(Verano|Invierno|Primavera|Otoño)$/i.test(formState.season) ? "" : "Only seasons.",
-            countries: formState.countries.trim() === "" ? "" : formState.countries.length <= 50 ? "" : "It cannot be longer than 50"
+            name: formState.name.trim() === "" ? "" : /^[a-zA-Z\s.'-]{1,25}$/u.test(formState.name) ?
+             "" : "It cannot contain numbers. Text only.",
+            difficulty: formState.difficulty.trim() === "" ? "" : /^[0-5]$/.test(formState.difficulty) ?
+             "" : "It must be a number between 0 and 5.",
+            duration: formState.duration.trim() === "" ? "" : /^(?:[0-9]|1\d|2[0-4])$/.test(formState.duration) ?
+             "" : "It must be a number between 0 and 24.",
+            season: formState.season.trim() === "" ? "" : /^(Verano|Invierno|Primavera|Otoño)$/i.test(formState.season) ?
+             "" : "Only seasons.",
+            countries: formState.countries.trim() === "" ? "" : formState.countries.length <= 50 ?
+             "" : "It cannot be longer than 50"
         });
     };
 
