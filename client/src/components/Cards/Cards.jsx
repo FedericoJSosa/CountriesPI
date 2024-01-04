@@ -58,7 +58,6 @@ const Cards = () => {
       const populationB = b.population;
       return sortOrder === "asc" ? populationA - populationB : populationB - populationA;
     }
-    return 0;
   });
 
   const filteredCountries = sortedCountries.filter((country) => {
