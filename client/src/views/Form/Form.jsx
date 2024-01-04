@@ -49,7 +49,7 @@ const Form = () => {
                await axios.post("http://localhost:3001/activities",  formState);
                setSubmitMessage("The activity has been created");
             } catch (error) {
-                setSubmitMessage("An error occurred while loading the data. Please try again later.");
+                setSubmitMessage("An error occurred while loading data. If there are no missing fields, please try again later.");
             }
         }
     };
